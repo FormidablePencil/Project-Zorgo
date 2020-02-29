@@ -33,8 +33,8 @@ export default function App() {
             title: '',
             headerShown: false,
           }}>
-          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
           <Stack.Screen name="ContentScreen" component={ContentScreen} />
+          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
           {/* This is where the pages belong */}
         </Stack.Navigator>
         : null
