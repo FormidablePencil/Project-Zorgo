@@ -26,7 +26,7 @@ import DisplayInputedValues from './DisplayInputedValues'
 
 
 
-export default function CalcComponent({ bundledStates, executeCalculator, numbersState, operatorsState }) {
+export default function CalcComponent({ bundledStates, executeCalculator, numbersState, operatorsState, prevBundledStates, clear }) {
   console.log(bundledStates)
   async function onPresshandler(valueOfElementPressed) {
     executeCalculator(valueOfElementPressed)
@@ -77,50 +77,24 @@ export default function CalcComponent({ bundledStates, executeCalculator, number
     )
   }
 
-  function usePrevious(value) {
-    const ref = useRef()
-    useEffect(() => { //aka componentDidMount
-      ref.current = value
-    })
-    return ref.current
-  }
-  
-  const prevStatesNumber = usePrevious(bundledStates)
-  let bundle = {}
-  bundle['numbersState'] = numbersState
-  bundle['operatorsState'] = operatorsState
-  
-  useEffect(() => { //aka componentDidMount
-    console.log('7777')
-    console.log(numbersState)
-    console.log(bundle)
-    console.log(operatorsState)
-  }, [numbersState])
-  useEffect(() => { //aka componentDidMount
-    console.log('7777')
-    console.log(numbersState)
-    console.log(bundle)
-    console.log(operatorsState)
-  }, [operatorsState])
-
   return (
     <OuterView>
 
       <DisplayCalculator>
         {/* always rerender this compoent */}
-        {/* {bundledStates ?
+        {bundledStates ?
           <DisplayInputedValues
             bundledStates={bundledStates}
           />
           : null
-        } */}
+        }
       </DisplayCalculator>
       <CalculatorView>
 
         <FirstCol>
 
           <ColGrid3>
-            <TouchableCalcVarious value={'AC'} />
+            <TouchableCalcVarious value={clear} />
             <TouchableCalcVarious value={'+/-'} />
             <TouchableCalcVarious value={'%'} />
           </ColGrid3>

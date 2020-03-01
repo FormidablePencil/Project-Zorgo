@@ -3,14 +3,12 @@ import { View, Text } from 'react-native'
 import { CalcView, CalcText } from '../styles/stylesCalcScreen'
 
 export const DisplayInputedValues = ({ bundledStates }) => {
-
-  console.log('llll')
-    console.log('done did it again')
-  console.log('llll')
-  bundledStates.numbersState = 'd'
-  console.log(bundledStates.numbersState)
-  if (bundledStates.numbersState && !bundledStates.operatorsState) {
-    const mappedOutValuesState = Object.values(bundledStates.numbersState).map((value, key) => {
+  const numbersState = bundledStates.numbersState
+  const operatorsState = bundledStates.operatorsState
+  const calculated = bundledStates.calculated
+  console.log(typeof !calculated)
+  if (numbersState && !operatorsState && !calculated) {
+    const mappedOutValuesState = Object.values(numbersState).map((value, key) => {
       return (
         <View key={key}>
           <CalcText>{value}</CalcText>
@@ -18,8 +16,8 @@ export const DisplayInputedValues = ({ bundledStates }) => {
       )
     })
     return mappedOutValuesState
-  } else if (bundledStates.operatorsState && !bundledStates.numbersState) {
-    const mappedOutOperatorState = Object.values(bundledStates.operatorsState).map((operator, key) => {
+  } else if (operatorsState && !numbersState && !calculated) {
+    const mappedOutOperatorState = Object.values(operatorsState).map((operator, key) => {
       return (
         <View key={key}>
           <CalcText>{operator}</CalcText>
@@ -27,21 +25,26 @@ export const DisplayInputedValues = ({ bundledStates }) => {
       )
     })
     return mappedOutOperatorState
-  } else if (bundledStates.operatorsState && bundledStates.numbersState) {
-    const mappedOutOperatorAndValuesState = Object.values(bundledStates.numbersState).map((value, key) => {
+  } else if (operatorsState && numbersState && !calculated) {
+    const mappedOutOperatorAndValuesState = Object.values(numbersState).map((value, key) => {
       return (
         <CalcView key={key}>
           <CalcText>{value}</CalcText>
-          {bundledStates.operatorsState ?
-            <CalcText>{bundledStates.operatorsState[key]}</CalcText>
+          {operatorsState ?
+            <CalcText>{operatorsState[key]}</CalcText>
             : null
           }
         </CalcView>
       )
     })
     return mappedOutOperatorAndValuesState
-  }
-  else { return null }
+  } else if (calculated) {
+    return (
+      <CalcView>
+        <CalcText>{calculated}</CalcText>
+      </CalcView>
+    )
+  } else { return null }
 }
 
 export default DisplayInputedValues
