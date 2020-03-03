@@ -6,14 +6,15 @@ import CalculatorScreen from '../drawerNavScreens/CalcScreen'
 import TodoListsScreen from '../drawerNavScreens/TodoListsScreen'
 import TictacktoeScreen from '../drawerNavScreens/TictacktoeScreen'
 import MatchingGame from '../drawerNavScreens/MatchingGame'
+import { ContextMatchingGameProvider } from '../context/ContextMatchingGame'
 
 const Drawer = createDrawerNavigator()
 
 export default function ContentScreen() {
   return ( 
     <Drawer.Navigator initialRouteName="seconddd">
+      <Drawer.Screen name="MatchingGame" component={ContextMatchingGameProvider} /> 
       <Drawer.Screen name="CalculatorScreen" component={CalculatorScreen} />
-      <Drawer.Screen name="MatchingGame" component={MatchingGame} /> 
       {/* I believe I've already done this one so copy, paste and modify for time efficiency */}
       <Drawer.Screen name="TictacktoeScreen" component={TictacktoeScreen} /> 
       {/* I've already done this one so copy, paste and modify for time efficiency */}

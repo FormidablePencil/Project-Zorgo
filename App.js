@@ -4,7 +4,9 @@ import WelcomeScreen from './stackNavScreens/WelcomeScreen'
 import * as Font from 'expo-font'; //This is built in to expo and it help us to load custom font's we've downloaded
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { ThemeProvider } from 'styled-components'
 import ContentScreen from './stackNavScreens/ContentScreen';
+import { theme } from './styles/globalStyles';
 
 const Stack = createStackNavigator();
 
@@ -24,22 +26,24 @@ export default function App() {
     }
     loadingFonts()
   }, [])
-  
+
   return (
-    <NavigationContainer>
-      {fontLoaded === true ?
-        <Stack.Navigator
-          screenOptions={{
-            title: '',
-            headerShown: false,
-          }}>
-          <Stack.Screen name="ContentScreen" component={ContentScreen} />
-          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-          {/* This is where the pages belong */}
-        </Stack.Navigator>
-        : null
-      }
-    </NavigationContainer>
+    <ThemeProvider theme={theme}>
+      <NavigationContainer>
+        {fontLoaded === true ?
+          <Stack.Navigator
+            screenOptions={{
+              title: '',
+              headerShown: false,
+            }}>
+            <Stack.Screen name="ContentScreen" component={ContentScreen} />
+            <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+            {/* This is where the pages belong */}
+          </Stack.Navigator>
+          : null
+        }
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
 
