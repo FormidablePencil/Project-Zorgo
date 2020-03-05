@@ -55,7 +55,11 @@ export const PrettyBoxes2 = styled.TouchableOpacity`
   align-items: center;
   border-radius: 10px;
 `
+export const SettingsItems = styled.TouchableOpacity`
+  padding: 10px;
+`
 export const AlignContent = styled.View`
+  z-index: 0;
   flex: 1;
   background-color: ${props => props.theme[props.theme.current].bg.bgColor};
   justify-content: center;
@@ -80,25 +84,99 @@ export const BoxShadowWorkAround = styled.View`
 `
 export const Row = styled.View`
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
+  height: 100px;
+  padding: 0px 20px 0px 20px;
   position: absolute;
   top: -80px;
 `
-export const RowItem = styled.View`
+// export const RowItem = styled.View`
+//   flex: 1;
+//   align-items: center;
+//   justify-content: center;
+// `
+export const StartMenuView = styled.View`
   flex: 1;
+  background-color: rgb(33,	33,	33);
+  width: 100%;
+  justify-content: space-around;
   align-items: center;
+`
+export const FlexRow = styled.View`
+  flex-direction: row;
+`
+export const ScoreCount = styled.View`
+  position: absolute;
+  bottom: -100px;
+  right: 40px;
+  align-self: flex-end;
+`
+export const BottomRow = styled.View`
+  flex-direction: row;
+  position: absolute;
+  bottom: -100px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0px 20px 0px 20px;
+`
+export const SettingsView = styled.View`
+  flex: 1;
   justify-content: center;
+  align-items: center;
+  background: gray;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1,	1,	1, .8);
+`
+export const Round = styled.View`
+  background-color: blue;
+`
+export const StartingCountdownView = styled.View`
+  flex: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  background-color: rgba(1,1,1,.3)
 `
 
-
-export const Shuffle = styled.Text`
+export const StandardText = styled.Text`
   color: white;
+  font-size: 25px;
+  font-family: fredoka-one-regular;
+`
+export const SettingsItemsText = styled(StandardText)`
+  font-size: 35px;
+`
+export const HeaderTextHighScore = styled(StandardText)`
+  
+`
+export const HeaderText = styled(StandardText)`
+  font-size: 50px;
+  text-align: center;
+`
+export const Shuffle = styled(StandardText)`
   font-size: 25px;
 `
 
-// export const prettyBox2 = styled.Text`
-//   align-items: center; justify-content: center; border-radius: 15; width: 110; height: 110; margin: 3;
-// `A
+export const prettyBox2 = styled.Text`
+  align-items: center; justify-content: center; border-radius: 15; width: 110; height: 110; margin: 3;
+`
+export const CountdownText = styled(StandardText)`
+  font-family: Poppins-Regular;
+  font-size: 40px;
+`
+export const CountText = styled(StandardText)`
+  font-size: 40px;
+  align-self: center;
+`
+
 
 
 export const styles = StyleSheet.create({

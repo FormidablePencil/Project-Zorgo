@@ -5,7 +5,6 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import CalculatorScreen from '../drawerNavScreens/CalcScreen'
 import TodoListsScreen from '../drawerNavScreens/TodoListsScreen'
 import TictacktoeScreen from '../drawerNavScreens/TictacktoeScreen'
-import MatchingGame from '../drawerNavScreens/MatchingGame'
 import { ContextMatchingGameProvider } from '../context/ContextMatchingGame'
 
 const Drawer = createDrawerNavigator()

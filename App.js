@@ -33,7 +33,6 @@ export default function App() {
         {fontLoaded === true ?
           <Stack.Navigator
             screenOptions={{
-              title: '',
               headerShown: false,
             }}>
             <Stack.Screen name="ContentScreen" component={ContentScreen} />

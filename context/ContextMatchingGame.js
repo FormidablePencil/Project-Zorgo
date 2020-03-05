@@ -1,49 +1,56 @@
 import React, { createContext, useState, useReducer } from 'react'
-import { View } from 'react-native'
-import MatchingGame from '../drawerNavScreens/MatchingGame'
+import MatchingGameScreen from '../drawerNavScreens/MatchingGameScreen'
+import { matchingGameReducer } from '../reducers/matchingGameReducer'
+import { scoreReducer } from '../reducers/scoreReducer'
+import { cubesLeftReducer } from '../reducers/cubesLeftReducer'
+import { prettyBoxPropertiesReducer } from '../reducers/prettyBoxPropertiesReducer'
+import { generateArrayOfNumbers, resetPrettyBoxProperties } from '../pureLogic/logicMatchingGame'
+import { tappedValueReducer } from '../reducers/tappedValueReducer'
+import { createStackNavigator } from '@react-navigation/stack'
+import GameMenu from '../components/matchingGame/GameMenu'
+import GameOverScreen from '../stackNavScreens/GameOverScreen'
+
+const Stack = createStackNavigator()
 
 export const MatchingGameContext = createContext()
 
 export function ContextMatchingGameProvider() { //~ we are creating reducers for all states. I just want to clean my codebase and to learn the way to arange my code
-  const [matchingGameArray, setMatchingGameArray] = useState()
-  const [tappedValue, setTappedValue] = useState()
-  const { score, dispatchScore } = useReducer(scoreReducer, 0)
-  const { cubesLeft, dispatchCubesLeft } = useReducer(cubesLeftReducer, 12)
-  const [prettyBoxVisible, setPrettyBoxVisible] = useState() // not neccessary to see
+  const [matchingGame, dispatchMatchingGame] = useReducer(matchingGameReducer, generateArrayOfNumbers())
+  const [tappedValue, dispatchTappedValue] = useReducer(tappedValueReducer)
+  const [score, dispatchScore] = useReducer(scoreReducer, 0)
+  const [cubesLeft, dispatchCubesLeft] = useReducer(cubesLeftReducer, 0)
+  const [prettyBoxProperties, dispatchPrettyBoxProperties] = useReducer(prettyBoxPropertiesReducer, resetPrettyBoxProperties())
+  const [playGame, setPlayGame] = useState(false)
+
+  const [round, setRound] = useState(0)
+  const [seconds, setSeconds] = useState(30)
+  const [startCountdown, setStartCountdown] = useState(3)
+  const [differentScreen, setDifferentScreen] = useState(false)
+  const [toggleSettings, setToggleSettings] = useState(false)
 
   return (
-    <MatchingGameContext.Provider value={{ cubesLeft, dispatchCubesLeft, score, dispatchScore }}>
-      <MatchingGame />
+    <MatchingGameContext.Provider value={{
+      cubesLeft, dispatchCubesLeft,
+      score, dispatchScore,
+      matchingGame, dispatchMatchingGame,
+      prettyBoxProperties, dispatchPrettyBoxProperties,
+      tappedValue, dispatchTappedValue,
+      playGame, setPlayGame,
+      seconds, setSeconds,
+      playGame, setPlayGame,
+      round, setRound,
+      startCountdown, setStartCountdown,
+      differentScreen, setDifferentScreen,
+      toggleSettings, setToggleSettings
+    }}>
+      <Stack.Navigator screenOptions={{
+        headerShown: false
+      }}>
+      <Stack.Screen name='GameOver' component={GameOverScreen} />
+        <Stack.Screen name='GameMenu' component={GameMenu} />
+        <Stack.Screen name='Game' component={MatchingGameScreen} />
+      </Stack.Navigator>
     </MatchingGameContext.Provider>
   )
 }
-
-const cubesLeftReducer = (state, action) => {
-  switch (action.type) {
-    case 'INCREMENT_BY_2':
-      const newState = state + 2
-      console.log('hi from cubesLeftReducer')
-      console.log(newState)
-      console.log(action.payload)
-      return newState
-    case 'DELETE_VALUE_IN_STATE':
-      return state
-    default:
-      return state
-  }
-}
-const scoreReducer = (state, action) => {
-  switch (action.type) {
-    case 'INCREMENT_BY_100':
-      const newStateIncre100 = state + 2
-      console.log('hi from scoreReducer')
-      console.log(newStateIncre100)
-      console.log(action.payload)
-      return newStateIncre100
-    case 'INCREMENT_BY_1.2':
-      const newStateIncremented = state * 1.2
-      return newStateIncremented
-    default:
-      return state
-  }
-}
+{/* //* simply add GameMenu.js here and add set the navigation methods in two diffrent places. Set if playGame === true then navigate to the screen... But make it do so instantly... */ }

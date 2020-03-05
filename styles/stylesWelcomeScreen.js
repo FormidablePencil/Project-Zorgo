@@ -49,7 +49,7 @@ export const TextInFirstButton = styled(TextInButton)`
 export const TextInSecondButton = styled(TextInButton)`
   color: white;
   font-family: pangolin-regular;
-  top:-6px
+  top:-6px;
 `
 export const BottomText = styled(TextInButton)`
   color: white;

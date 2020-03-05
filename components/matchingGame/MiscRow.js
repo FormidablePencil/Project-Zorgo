@@ -1,22 +1,21 @@
-import React from 'react'
-import { Shuffle, RandomizeBtn } from '../../styles/stylesMatchingGame'
-import Timer from '../Timer'
+import React, { useRef, useState } from 'react'
+import { Shuffle, RandomizeBtn, StandardText, SettingsView } from '../../styles/stylesMatchingGame'
+import Timer from './Timer'
 import { Row, RowItem } from '../../styles/stylesMatchingGame'
+import { Text, Button } from 'react-native'
+import { Ionicons } from '@expo/vector-icons';
 
-export const MiscRow = ({ score }) => {
+export const MiscRow = ({setToggleSettings, navigation}) => {
+
   return (
-    <Row style={{ flexDirection: 'row' }}>{/* //@ this should be a seperate component of it's own. */}
-      <RowItem>
-        <Timer />
-      </RowItem>
-      <RowItem>
-        <Shuffle>{score}</Shuffle>
-      </RowItem>
-      {/* <RowItem>
-        <RandomizeBtn onPress={() => { reset() }}>
-          <Shuffle>R</Shuffle>
-        </RandomizeBtn>
-      </RowItem> */}
+    <Row>{/* //@ this should be a seperate component of it's own. */}
+      <Timer navigation={navigation} />
+      <Ionicons name="md-settings" size={50} color="white" onPress={() => setToggleSettings(true)} style={{bottom: 10}}/>
     </Row>
   )
 }
+
+      // <SettingsView>
+      //   <StandardText>Restart</StandardText>
+      //   <StandardText>Quit</StandardText>
+      // </SettingsView>
