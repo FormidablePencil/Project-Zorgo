@@ -11,7 +11,12 @@ import GameMenu from '../components/matchingGame/GameMenu'
 
 const width = Math.round(Dimensions.get('window').width);
 
-export default function MatchingGameScreen({ navigation, }) {
+//@ 1. wrap this whole application with Redux
+//@ 2. set up store, reducers and actions with the help of flashcards app as reference
+//@ 3. refractor the code by putting all actions into seperate actions file, set up reducers and keep only a few simple states in Context such as toggleSettings; things that aren't fired often. 
+// Now we should have a finished product, moving onto the next one. Perhaps a money lender tracker app sounds like a good idea.
+
+export default function MatchingGameScreen({ navigation, }) { 
   const {
     cubesLeft, dispatchCubesLeft,
     score, dispatchScore,
@@ -44,7 +49,7 @@ export default function MatchingGameScreen({ navigation, }) {
         console.log('something went wrong')
     }
   }
-  function matchingGameAction(value, whatBox) { //! what would be cool is if I made this game multimplayer as wells as tic tack toe
+  const matchingGameAction = (value, whatBox) => { //! what would be cool is if I made this game multimplayer as wells as tic tack toe
 
     const evaluatedPlayerInput = evaluatePlayerInput(value, whatBox)
     switch (evaluatedPlayerInput) {
@@ -92,8 +97,8 @@ export default function MatchingGameScreen({ navigation, }) {
   }
 
   function reset() { //rests
-    setStartCountdown(3)
-    setSeconds(30)
+    // setStartCountdown(3)
+    setSeconds(3000)
     setToggleSettings(false)
     resetAction()
   }

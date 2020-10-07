@@ -16,14 +16,12 @@ const Timer = ({navigation}) => {
     setPlayGame(false)
     setSeconds(30);
   }
-
+  
   useEffect(() => {
     let interval = null;
     if (startCountdown < 0) {
-      console.log('kff')
       if (seconds > 0) {
         interval = setInterval(() => {
-          console.log('kqq')
           setSeconds(seconds => seconds - 1);
         }, 1000);
       } else {

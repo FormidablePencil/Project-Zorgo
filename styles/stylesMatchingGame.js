@@ -143,7 +143,7 @@ export const StartingCountdownView = styled.View`
   justify-content: center;
   align-items: center;
   z-index: 1;
-  background-color: rgba(1,1,1,.3)
+  background-color: rgba(1,1,1,.3);
 `
 
 export const StandardText = styled.Text`
@@ -184,6 +184,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center', borderRadius: 15, width: 110, height: 110,
   },
   littleMargin: {
-    margin: 3
+    margin: 3,
   }
 })

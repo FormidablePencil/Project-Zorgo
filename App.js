@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { ThemeProvider } from 'styled-components'
 import ContentScreen from './stackNavScreens/ContentScreen';
 import { theme } from './styles/globalStyles';
+import Test from './stackNavScreens/Test';
 
 const Stack = createStackNavigator();
 
@@ -35,22 +36,14 @@ export default function App() {
             screenOptions={{
               headerShown: false,
             }}>
-            <Stack.Screen name="ContentScreen" component={ContentScreen} />
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+            <Stack.Screen name="ContentScreen" component={ContentScreen} />
+            <Stack.Screen name="Test" component={Test} />
             {/* This is where the pages belong */}
           </Stack.Navigator>
           : null
         }
       </NavigationContainer>
     </ThemeProvider>
-  );
-}
-
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <View styles={{ backgroundColor: 'green', height: 200, weidth: 200 }} onPress={() => console.log(fontLoaded)}></View>
-    </View>
   );
 }

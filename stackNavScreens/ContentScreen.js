@@ -12,14 +12,11 @@ const Drawer = createDrawerNavigator()
 export default function ContentScreen() {
   return ( 
     <Drawer.Navigator initialRouteName="seconddd">
-      <Drawer.Screen name="MatchingGame" component={ContextMatchingGameProvider} /> 
       <Drawer.Screen name="CalculatorScreen" component={CalculatorScreen} />
-      {/* I believe I've already done this one so copy, paste and modify for time efficiency */}
+      <Drawer.Screen name="MatchingGame" component={ContextMatchingGameProvider} /> 
       <Drawer.Screen name="TictacktoeScreen" component={TictacktoeScreen} /> 
-      {/* I've already done this one so copy, paste and modify for time efficiency */}
       <Drawer.Screen name="TodoListsScreen" component={TodoListsScreen} /> 
-      {/* I've already done this one so copy, paste and modify for time efficiency */}
     </Drawer.Navigator>
   )
 }
-{/* <Text>This page will contain a tab navigation that's full of awesome functionalities</Text> */}
+//~ what's left is a todo list and add the productivity tracker to this project

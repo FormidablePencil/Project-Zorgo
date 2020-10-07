@@ -17,7 +17,7 @@ export const TitleText = styled.Text`
   export const TextGreeting = styled.Text`
   color: white;
   font-size: 35px;
-  margin-top: 20px
+  margin-top: 20px;
   font-family: Poppins-Regular;
 `
 

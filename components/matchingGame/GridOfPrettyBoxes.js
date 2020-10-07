@@ -41,7 +41,7 @@ export const GridOfPrettyBoxes = ({ matchingGameAction, prettyBoxProperties, mat
 
 export const PrettyBoxesRow = ({ item, item1, item2, box, box1, box2, prettyBoxProperties, matchingGameAction }) => {
   return (
-    <HorizontalAlign>
+    <HorizontalAlign style={{right: -5}}>
       <PrettyBoxes item={item} whatBox={box} prettyBoxProperties={prettyBoxProperties} matchingGameAction={matchingGameAction} />
       <PrettyBoxes item={item1} whatBox={box1} prettyBoxProperties={prettyBoxProperties} matchingGameAction={matchingGameAction} />
       <PrettyBoxes item={item2} whatBox={box2} prettyBoxProperties={prettyBoxProperties} matchingGameAction={matchingGameAction} />
@@ -62,7 +62,7 @@ export function PrettyBoxes(props) { //show down here prettyBoxVisibility obj an
   return (
     <View>
       {prettyBoxProperties[whatBox].visible ?
-        <View style={{}}>
+        <View>
           <BoxShadowWorkAround>
             <TouchableOpacity style={{}} onPress={() => handleOnPress()}>
               <LinearGradient

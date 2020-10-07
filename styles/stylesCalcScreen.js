@@ -45,6 +45,7 @@ export const StandardCalcTouchable = styled.TouchableHighlight`
   justify-content: center;
   align-items: center;
   `
+
 export const grayOverlayColor = 'rgb(176, 176, 176)'
 export const DigitTouchable = styled(StandardCalcTouchable)`
   background-color: rgb(97,	100,	104);
